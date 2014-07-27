@@ -1,0 +1,11 @@
+---
+
+- name: StaticApp | Change file permissions
+  sudo_user: "{{ project.user }}"
+  file: >
+    path="{{ project.root }}/code" 
+    mode=755 
+    recurse=yes
+  tags:
+    - permissions
+    - app

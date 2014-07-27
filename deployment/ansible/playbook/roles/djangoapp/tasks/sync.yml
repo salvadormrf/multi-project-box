@@ -1,0 +1,13 @@
+---
+
+- name: DjangoApp | Synchronize code files
+  sudo_user: "{{ project.user }}"
+  synchronize: >
+      src="{{ project.code_dir }}"
+      dest="{{ project.root }}/code/"
+      archive=no
+      recursive=yes
+      rsync_opts="--exclude='.pyc'"
+  tags:
+    - sync
+    - app

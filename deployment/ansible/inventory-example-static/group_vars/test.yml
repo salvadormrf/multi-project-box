@@ -1,0 +1,28 @@
+---
+
+# General project Settings
+project:
+  name: myproject-static-test
+  mode: dev
+  
+  user: ubuntu
+  group: ubuntu
+  
+  # project destination path
+  root: "/home/ubuntu/www/myproject-static-test"
+  
+  # folder to copy to destination server
+  code_dir: "{{ inventory_dir }}/../../../project_demos/myproject_static"
+  
+nginx:
+  conf_type: static
+  root: "{{ project.root }}/code/myproject_static"
+  
+  servernames:
+    - "{{ project.name }}.zendevbox.com"
+    
+  ssl:
+    # SSL certificates
+    public: '{{ inventory_dir }}/files/ssl/_.zendevbox.com.cert'
+    private: '{{ inventory_dir }}/files/ssl/_.zendevbox.com.key'
+    

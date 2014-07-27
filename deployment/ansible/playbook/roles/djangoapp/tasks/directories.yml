@@ -1,0 +1,30 @@
+---
+- name: DjangoApp | Directories | Create root directory.
+  file: >
+    path="{{ project.root }}"
+    state=directory
+    owner="{{ project.user }}"
+    group="{{ project.user }}"
+  tags:
+    - configuration
+    - webserver
+    - directories
+    
+- name: DjangoApp | Directories | Create folder.
+  file: >
+    path="{{ project.root }}/{{ item }}"
+    state=directory
+    recurse=yes
+    owner="{{ project.user }}"
+    group="{{ project.user }}"
+  with_items: 
+    - logs
+    - ssh
+    - files
+    - code
+    - backups
+    - run
+  tags:
+    - configuration
+    - webserver
+    - directories

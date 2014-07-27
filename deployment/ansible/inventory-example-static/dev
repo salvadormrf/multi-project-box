@@ -1,0 +1,5 @@
+[webservers]
+zendevbox.com ansible_ssh_user=ubuntu
+
+[dev:children]
+webservers

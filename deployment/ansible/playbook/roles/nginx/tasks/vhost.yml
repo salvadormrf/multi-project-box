@@ -8,7 +8,7 @@
 - name: Nginx | Install nginx configuration file.
   notify: restart nginx
   template: >
-    src=vhost.conf.j2
+    src="vhost.{{ nginx.conf_type }}.conf.j2"
     dest=/etc/nginx/sites-enabled/{{ project.name }}
   tags:
     - configuration

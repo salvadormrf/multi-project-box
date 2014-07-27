@@ -1,0 +1,9 @@
+[dbservers]
+zendevbox.com
+
+[webservers]
+zendevbox.com migrate=true syncdb=true ansible_ssh_user=ubuntu
+
+[stage:children]
+dbservers
+webservers

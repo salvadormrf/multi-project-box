@@ -1,0 +1,74 @@
+---
+
+# General project Settings
+project:
+  name: myproject-django-dev
+  mode: dev
+  
+  user: ubuntu
+  group: ubuntu
+  
+  root: "/home/ubuntu/www/myproject-django-dev"
+  virtualenv: "/home/ubuntu/www/myproject-django-dev/venv"
+  pip_requirements: "/home/ubuntu/www/myproject-django-dev/code/myproject_django/requirements.txt"
+  
+  code_dir: "{{ inventory_dir }}/../../../project_demos/myproject_django"
+  
+
+# Project Database
+database:
+  name: mydatabase
+  user: mydatabaseuser
+  password: mypassword
+
+
+# Django project
+django:
+  #port: 9081
+  socket: "{{ project.root }}/run/{{ project.name }}.sock"
+  settings: myproject_django.settings
+  wsgi: "{{ project.root }}/code/myproject_django/myproject_django/wsgi.py"
+  app_root: "{{ project.root }}/code/myproject_django"
+  static: "{{ project.root }}/code/static"
+  
+  post_deploy_tasks:
+    - collectstatic
+
+
+nginx:
+  conf_type: django
+  servernames:
+    - "{{ project.name }}.zendevbox.com"
+    
+  ssl:
+    # SSL certificates
+    public: '{{ inventory_dir }}/files/ssl/_.zendevbox.com.cert'
+    private: '{{ inventory_dir }}/files/ssl/_.zendevbox.com.key'
+    
+  
+mysql:
+  port: root
+  root_password: 'rootpass'
+
+# TODO
+postgresql:
+  
+#
+#pgbouncer:
+#  user: postgres
+#  group: postgres
+#  
+#  config:
+#    # real database address
+#    database_host: "jjj.amazonaws.com"
+#    database_port: 5432
+#    database_user: "dbuser"
+#    database_pass: "dbpass"
+#    
+#    listen_addr: 127.0.0.1
+#    listen_port: 5432
+#    
+#    # run as postgres user
+#    user: postgres
+#  
+#  

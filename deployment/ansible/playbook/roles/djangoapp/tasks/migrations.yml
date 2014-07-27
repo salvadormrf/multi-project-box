@@ -1,0 +1,26 @@
+---
+
+- name: DjangoApp |  Create Database Tables
+  when: syncdb is defined
+  django_manage: >
+    command=syncdb
+    app_path={{ django.app_root }}
+    settings={{ django.settings }}
+    virtualenv={{ project.virtualenv }}
+  tags:
+    - syncdb
+    - database
+    - app
+  
+- name: DjangoApp |  Migrate Django database.
+  when: migrate is defined
+  django_manage: >
+    command=migrate
+    app_path={{ django.app_root }}
+    settings={{ django.settings }}
+    virtualenv={{ project.virtualenv }}
+  tags:
+    - migrate
+    - database
+    - update
+    - app

@@ -2,6 +2,17 @@ multi-project-box
 =================
 
 Deployment template for hosting multiple projects with multiple environments under the same box.
+(In progress...)
+
+
+# TODO
+- Documentation
+- Vagrant box support
+- Django advanced settings
+- Database backup
+- Database import
+- Tests
+- Ansible Coding Conventions https://github.com/edx/configuration/wiki/Ansible-Coding-Conventions
 
 
 ---
@@ -33,13 +44,3 @@ Deployment template for hosting multiple projects with multiple environments und
     ansible-playbook deployment/ansible/playbook/site.yml -i deployment/ansible/inventory/dev --tags=nginx
 
 
-# TODO
-- Documentation
-- SSL support
-- Vagrant box
-- Django advanced settings
-- Static app
-- Database backup
-- Database import
-- Tests
-- Ansible Coding Conventions https://github.com/edx/configuration/wiki/Ansible-Coding-Conventions

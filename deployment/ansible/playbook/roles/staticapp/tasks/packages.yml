@@ -1,14 +1,13 @@
 ---
-- name: Nginx | Install required system packages.
+- name: StaticApp | Packages | Install required system packages.
   apt: >
     pkg={{ item }}
     state=installed
     update-cache=yes
   with_items:
     - build-essential
-    - nginx
   tags:
-    - nginx
+    - base
     - packages
     - provision
-    - webserver
+    - app

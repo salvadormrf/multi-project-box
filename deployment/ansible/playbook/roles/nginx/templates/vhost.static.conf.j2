@@ -1,0 +1,47 @@
+# {{ ansible_managed }}
+
+server {
+	
+    listen                  80;
+    {% if nginx.ssl is defined %}
+    listen                  443 ssl;
+    {% endif %}
+    
+    charset                 utf-8;
+    server_tokens           off;
+	
+	gzip on;
+	gzip_disable "msie6";
+	
+	gzip_vary on;
+	gzip_proxied any;
+	gzip_comp_level 6;
+	gzip_buffers 16 8k;
+	gzip_http_version 1.1;
+	gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+	
+    server_name				{% for name in nginx.servernames %}{{ name }} {% endfor %};
+	
+    {% if nginx.ssl is defined %}
+    ssl_certificate			"/etc/nginx/ssl/{{ project.name }}-public";
+    ssl_certificate_key		"/etc/nginx/ssl/{{ project.name }}-private";
+    {% endif %}
+	
+    access_log              {{ project.root }}/logs/nginx.access.{{ ansible_fqdn }}.log;
+    error_log               {{ project.root }}/logs/nginx.error.{{ ansible_fqdn }}.log;
+
+    expires modified        -1d;
+	
+	# root directory
+    root {{ nginx.root }};
+    index index.html index.htm;
+    
+    # static files with version
+	#rewrite		^/static/v[0-9.]+/(.*) /static/$1;
+	
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+}
+

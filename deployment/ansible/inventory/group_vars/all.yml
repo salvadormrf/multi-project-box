@@ -1,8 +1,0 @@
----
-user:
-  ssh_files: ../inventory/files/ssh
-  ssl_files: ../inventory/files/ssl
-
-settings:
-  django_settings: ../inventory/files/django/settings
-    

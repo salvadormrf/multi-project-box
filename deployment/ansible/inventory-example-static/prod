@@ -1,0 +1,5 @@
+[webservers]
+zenprodbox.com ansible_ssh_user=ubuntu
+
+[prod:children]
+webservers

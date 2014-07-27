@@ -1,4 +1,4 @@
 ---
 - include: packages.yml
-#- include: certificates.yml
+- include: certificates.yml
 - include: vhost.yml
