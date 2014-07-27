@@ -1,0 +1,85 @@
+# {{ ansible_managed }}
+
+upstream django_{{ project.name }} {
+	{% if django.socket is defined %}
+	server					unix:{{ django.socket }};
+	{% else %}
+	server                  127.0.0.1:{{ django.port }};
+	{% endif %}
+}
+
+server {
+	
+    listen                  80;
+    {% if nginx.ssl is defined %}
+    listen                  443 ssl;
+    {% endif %}
+    
+    charset                 utf-8;
+    server_tokens           off;
+	
+	gzip on;
+	gzip_disable "msie6";
+	
+	gzip_vary on;
+	gzip_proxied any;
+	gzip_comp_level 6;
+	gzip_buffers 16 8k;
+	gzip_http_version 1.1;
+	gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+	
+    server_name				{% for name in nginx.servernames %}{{ name }} {% endfor %};
+	
+    {% if nginx.ssl is defined %}
+    ssl_certificate         {{ nginx.ssl.certificate }}; 
+    ssl_certificate_key     {{ nginx.ssl.certificate_key }};
+    {% endif %}
+	
+    access_log              {{ project.root }}/logs/nginx.access.{{ ansible_fqdn }}.log;
+    error_log               {{ project.root }}/logs/nginx.error.{{ ansible_fqdn }}.log;
+
+    expires modified        -1d;
+	
+    ## favicon
+    #location /favicon.ico { 
+    #	alias {{ django.static }}/favicon.ico;
+    #}
+    #
+    ## robots.txt
+    #location /robots.txt { 
+    #	alias {{ django.static }}/robots-{{ project.name }}.txt;
+    #}
+    #
+    ## sitemap.xml
+    #location /sitemap.xml  { 
+    #	alias {{ django.static }}/sitemap.xml;
+    #}
+    
+    # static files with version
+	rewrite		^/static/v[0-9.]+/(.*) /static/$1;
+	
+    location / {
+        try_files $uri @{{ project.name }};
+    }
+    
+    location /static {
+    	expires 365d;
+        alias {{ django.static }};
+        autoindex off;
+    }
+    
+    location @{{ project.name }} {
+        proxy_read_timeout          300;
+        proxy_connect_timeout       300;
+        proxy_redirect              off;
+
+        proxy_set_header            X-Forwarded-Proto $scheme;
+        proxy_set_header            Host              $http_host;
+        proxy_set_header            X-Real-IP         $remote_addr;
+
+        uwsgi_pass                  django_{{ project.name }};
+        include                     /etc/nginx/uwsgi_params;
+    }
+
+}
+

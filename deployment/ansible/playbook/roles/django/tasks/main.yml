@@ -1,0 +1,10 @@
+---
+- include: packages.yml
+- include: directories.yml
+- include: sync.yml
+- include: pyclean.yml
+- include: pip.yml
+- include: migrations.yml
+  when: migrate is defined and migrate == 'true'
+- include: tasks.yml
+- include: cron.yml

@@ -1,0 +1,14 @@
+---
+- name: Memcached | Install required system packages.
+  apt: >
+    pkg={{ item }}
+    state=installed
+    update-cache=yes
+  with_items:
+    - memcached
+  notify: 
+    - restart memcached
+  tags:
+    - memcached
+    - cache
+    

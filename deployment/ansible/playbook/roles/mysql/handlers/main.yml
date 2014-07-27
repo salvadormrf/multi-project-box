@@ -1,0 +1,14 @@
+---
+- name: start mysql
+  sudo_user: root
+  service: >
+    name=mysql 
+    state=started 
+    enabled=yes
+
+- name: restart mysql
+  sudo_user: root
+  service: >
+    name=mysql 
+    state=restarted 
+    enabled=yes

@@ -1,0 +1,13 @@
+---
+
+- name: Django | Post Deploy Commands
+  django_manage: >
+      command={{ item }}
+      app_path={{ django.app_root }}
+      virtualenv={{ project.virtualenv }}  
+  with_items: django.post_deploy_tasks
+  tags:
+    - tasks
+    - app
+    - django_manage
+    

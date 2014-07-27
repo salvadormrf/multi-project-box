@@ -1,0 +1,17 @@
+---
+- name: MySQL | Install required system packages.
+  apt: >
+    pkg={{ item }}
+    state=installed
+    update-cache=yes
+  with_items:
+    - mysql-server
+    - mysql-client
+    - python-mysqldb
+  notify: 
+    - restart mysql
+  tags:
+    - packages
+    - provision
+    - database
+    - mysql

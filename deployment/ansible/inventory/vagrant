@@ -1,0 +1,6 @@
+
+[webservers]
+192.168.111.180 syncdb=true migrate=true ansible_ssh_host=127.0.0.1 ansible_ssh_port=2280 ansible_ssh_user=vagrant
+
+[vagrant:children]
+webservers

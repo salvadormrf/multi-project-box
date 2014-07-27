@@ -1,0 +1,28 @@
+---
+
+project:
+  name: myproject-local
+  mode: local
+  
+  user: vagrant
+  group: vagrant
+  
+  root: "/home/vagrant/myproject-local"
+  virtualenv: "/home/vagrant/myproject-local/venv"
+  pip_requirements: "/vagrant/demos/myproject_django16/requirements.txt"
+  
+django:
+  app_root: "/vagrant/demos/myproject_django16"
+  post_deploy_tasks:
+    - collectstatic
+
+mysql:
+  # MySQL Settings
+  port: root
+  root_password: 'rootpass'
+  
+  # Project Database
+  dbname: dbname
+  dbuser: dbuser
+  dbpass: 'dbpass'
+  

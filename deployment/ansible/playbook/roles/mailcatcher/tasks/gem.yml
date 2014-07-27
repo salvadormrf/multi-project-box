@@ -1,0 +1,12 @@
+---
+- name: MailCatcher | Gem | Install gem package.
+  gem: >
+    name={{ item }}
+    state=present
+    user_install=yes
+  with_items:
+    - mailcatcher
+  tags:
+    - packages
+    - provision
+    - mailcatcher

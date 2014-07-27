@@ -1,0 +1,13 @@
+---
+- name: Django | App | Set up cron jobs.
+  cron: >
+    name="Clear old sessions"
+    user={{ project.user }} 
+    job="{{ item }}" 
+    state=present
+  with_template:
+    - ../templates/clear_sessions.j2
+  tags:
+    - cron
+    - app
+    

@@ -1,0 +1,16 @@
+---
+- name: Django | App | Remove .pyc Files
+  sudo_user: "{{ project.user }}"
+  shell: "find {{ django.app_root }} -type f -name '*.py[co]' -delete"
+  tags:
+    - clean
+    - update
+    - app
+    
+- name: Django | App | Remove __pycache__ Directories
+  sudo_user: "{{ project.user }}"
+  shell: "find {{ django.app_root }} -type d -name '__pycache__' -delete"
+  tags:
+    - clean
+    - update
+    - app

@@ -1,0 +1,18 @@
+---
+# file: devbox.yml
+- name: Gather data about target box
+  hosts: webservers
+  gather_facts: yes
+  tasks:
+    - debug: Gather Facts
+    
+- name: Configure target box
+  hosts: webservers
+  sudo: yes
+  roles:
+    - { role: ubuntu }
+    - { role: memcached }
+    - { role: django }
+    - { role: uwsgi }
+    - { role: nginx }
+    

@@ -1,0 +1,7 @@
+---
+- include: packages.yml
+- include: directories.yml
+- include: pyclean.yml
+- include: pip.yml
+- include: tasks.yml
+- include: server.yml

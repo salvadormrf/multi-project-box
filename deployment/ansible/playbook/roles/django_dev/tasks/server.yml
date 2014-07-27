@@ -1,0 +1,12 @@
+---
+- name: django_dev | Create run script.
+  template: >
+    src=run.sh.j2
+    dest={{ project.root }}/run.sh
+    mode=0770
+    owner={{ project.user }}
+    group={{ project.group }}
+  tags:
+    - django_dev
+    - runscript
+    - appserver

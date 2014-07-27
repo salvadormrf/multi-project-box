@@ -1,0 +1,14 @@
+---
+- name: MailCatcher | Install required system packages.
+  apt: >
+    pkg={{ item }}
+    state=installed
+    update-cache=yes
+  with_items:
+    - libsqlite3-dev
+    - ruby-dev
+  tags:
+    - packages
+    - provision
+    - mailcatcher
+    

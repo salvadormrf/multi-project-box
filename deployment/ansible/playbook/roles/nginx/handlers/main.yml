@@ -1,0 +1,14 @@
+---
+- name: restart nginx
+  sudo_user: root
+  service: >
+    name=nginx 
+    state=restarted 
+    enabled=yes
+
+- name: reload nginx
+  sudo_user: root
+  service: >
+    name=nginx 
+    state=reloaded 
+    enabled=yes

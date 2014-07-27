@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Run local mail server | optionally
+/home/vagrant/.gem/ruby/*/bin/mailcatcher --ip=0.0.0.0 &
+
+# enable virtual environment
+source {{ project.virtualenv }}/bin/activate
+
+# install new dependencies
+pip install -r {{ project.pip_requirements }}
+
+# go to project path
+cd {{ django.app_root }}
+
+# run django management commands
+python manage.py syncdb --migrate --noinput
+
+# run development server
+python manage.py runserver 0:8000

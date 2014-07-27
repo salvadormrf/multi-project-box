@@ -1,0 +1,14 @@
+---
+# file: dbservers.yml
+- name: Gather data about target box
+  hosts: dbservers
+  gather_facts: yes
+  tasks:
+    - debug: Gather Facts
+    
+- name: Configure target box
+  hosts: dbservers
+  sudo: yes
+  roles:
+    - { role: mysql }
+    - { role: postgres }

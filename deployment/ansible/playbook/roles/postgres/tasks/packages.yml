@@ -1,0 +1,17 @@
+---
+- name: PostgreSQL | Install Packages
+  apt: >
+    pkg={{ item }}
+    state=installed
+    update-cache=yes
+  with_items:
+    - build-essential
+    - postgresql
+    - python-dev
+    - python-setuptools
+    - python-psycopg2
+    - postgresql-9.3
+    - postgresql-contrib-9.3
+    - postgresql-doc-9.3
+    - postgresql-server-dev-all
+    - libpq-dev
