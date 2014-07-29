@@ -52,7 +52,9 @@
 
 - name: MySQL | Create application database.
   mysql_db: >
-    name={{ database.name }} 
+    name={{ database.name }}
+    collation="{{ mysql.collation | default('utf8_general_ci') }}"
+    encoding="{{ mysql.encoding | default('utf8') }}"
     state=present 
     login_password={{ mysql.root_password }} 
     login_user=root
