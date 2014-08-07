@@ -7,7 +7,9 @@
       dest="{{ project.root }}/code/"
       archive=no
       recursive=yes
+      delete=yes
       rsync_opts="--exclude='.pyc'"
   tags:
     - sync
     - app
+    

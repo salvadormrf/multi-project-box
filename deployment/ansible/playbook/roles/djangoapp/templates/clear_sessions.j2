@@ -1,1 +1,1 @@
-{{ project.virtualenv }}/bin/python {{ django.app_root }}/manage.py clearsessions >> "{{ project.root }}/logs/clearsessions.log"
+DJANGO_SETTINGS_MODULE={{ django.settings }} {{ project.virtualenv }}/bin/python {{ django.app_root }}/manage.py clearsessions --settings={{ django.settings }} >> "{{ project.root }}/logs/clearsessions.log"
