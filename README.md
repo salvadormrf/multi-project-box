@@ -6,13 +6,11 @@ Deployment template for hosting multiple projects with multiple environments und
 
 - Get a box
 - Buy a domain e.g. **zendevbox.com**
-- Set a wildcard record ***.zendevbox.com** to the box ip address
+- Set a wildcard record **\*.zendevbox.com** to the box ip address
 - Buy a wildcard **SSL certificate** and install on your load balancer (optional)
 - Configure jenkins to auto-deploy on commits (optional)
-
-
     
-    # example of first deployed project
+##### Project will be available like:
     https://myproject-dev.zendevbox.com
     https://myproject-test.zendevbox.com
     https://myproject-stage.zendevbox.com
