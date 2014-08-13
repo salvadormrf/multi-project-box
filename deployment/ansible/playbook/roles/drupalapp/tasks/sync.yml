@@ -1,0 +1,17 @@
+---
+
+- name: Project | Synchronize code files
+  sudo_user: "{{ project.user }}"
+  synchronize: >
+      src="{{ inventory_dir }}/../../../project_demos/myproject_drupal/drupal"
+      dest="{{ project.root }}/code/"
+      rsync_timeout=0
+      archive=no
+      recursive=yes
+      delete=yes
+  tags:
+    - sync
+    - app
+    - code
+
+#rsync_opts="--exclude='node_modules' --exclude='.sass-cache' --exclude='drupal/sites/default/files'"

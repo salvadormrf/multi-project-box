@@ -1,5 +1,4 @@
 ---
-# file: dbservers.yml
 - name: Gather data about target box
   hosts: dbservers
   gather_facts: yes
@@ -10,5 +9,6 @@
   hosts: dbservers
   sudo: yes
   roles:
+    - { role: ubuntu }
     - { role: mysql }
     - { role: postgres }

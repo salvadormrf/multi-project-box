@@ -1,0 +1,13 @@
+---
+- name: Varnish | Install required system packages.
+  apt: >
+    pkg={{ item }}
+    state=installed
+    update-cache=yes
+  with_items:
+    - varnish
+  tags:
+    - packages
+    - provision
+    - cacheserver
+    - varnish

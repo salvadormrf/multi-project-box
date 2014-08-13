@@ -1,0 +1,45 @@
+# {{ ansible_managed }}
+
+
+# TODO add more D7 rules
+
+# based from http://www.geoffstratton.com/2014/03/nginx-php-fpm-apc-ssl-drupal/
+# https://bitbucket.org/philipnorton42/vlad
+# https://www.lullabot.com/blog/article/configuring-varnish-high-availability-multiple-web-servers
+# http://miss-hana.com/varnish-3-on-nginx-for-drupal-7/
+# https://fourkitchens.atlassian.net/wiki/display/TECH/Configure+Varnish+3+for+Drupal+7
+# http://miss-hana.com/nginx-php-fpm-for-drupal-7-on-aws-ec2/
+# http://www.acquia.com/blog/explaining-varnish-beginners
+# https://gist.github.com/mostalive/744643
+# https://www.drupal.org/node/1196916
+# https://www.digitalocean.com/community/tutorials/how-to-configure-varnish-for-drupal-with-apache-on-debian-and-ubuntu
+# https://www.varnish-cache.org/docs/3.0/tutorial/purging.html
+# http://drupalway.net/blog/drupal-7x-varnish-3x-and-apache-2x-configuration-all-one-post
+# http://www.hashbangcode.com/blog/ansible-automation-engine
+
+
+server {
+        listen {{ nginx.port }};                       
+        server_name	{% for name in nginx.servernames %}{{ name }} {% endfor %};
+        
+        root {{ nginx.root }};
+        index index.php;
+ 
+        location / {
+           try_files $uri @rewrite;   # need this for Drupal clean_urls
+        }
+        
+        # define @rewrite
+        location @rewrite {
+           rewrite ^ /index.php last;
+        }
+        
+        # tell nginx to pass php scripts to php-fpm
+        location ~ \.php$ {
+                fastcgi_split_path_info ^(.+\.php)(/.+)$;
+                fastcgi_pass unix:/var/run/php5-fpm.sock;
+                #fastcgi_pass 127.0.0.1:9000;  # TODO check
+                fastcgi_index index.php;
+                include fastcgi_params;
+        }
+}

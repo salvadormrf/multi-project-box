@@ -1,0 +1,24 @@
+---
+
+- name: Project | Drupal | Drush | Clear cache.
+  command: >
+    drush cc all --root={{ drupal.root }}
+  notify:
+    - restart memcached
+    - restart php5-fpm
+  tags:
+    - clear-cache
+    - drupal
+    - drush
+
+#
+#- name: Project | Drupal | Clear tmp folder
+#  file: >
+#    path="/tmp/*"
+#    state="absent"
+#      
+#- name: Project | Drupal | Clear twig folder
+#  file: >
+#    path="{{ project.root }}/code/project/drupal/sites/default/files/private/twig_cache/lebara_theme/*"
+#    state="absent"
+#

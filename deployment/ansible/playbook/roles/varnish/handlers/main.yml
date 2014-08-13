@@ -1,0 +1,23 @@
+---
+- name: start varnish
+  sudo_user: root
+  service: >
+    name=varnish 
+    state=started 
+    enabled=yes
+
+- name: restart varnish
+  sudo_user: root
+  service: >
+    name=varnish 
+    state=restarted 
+    enabled=yes
+
+- name: reload varnish
+  sudo_user: root
+  service: >
+    name=varnish 
+    state=reloaded 
+    enabled=yes
+
+    

@@ -1,0 +1,43 @@
+---
+
+project:
+  # project details
+  name: myproject-local
+  mode: local
+  
+  user: vagrant
+  group: vagrant
+  
+  root: "/home/vagrant/myproject-local"
+  
+mysql:
+  # mysql deamon
+  port: 3306
+  root_password: 'root'
+
+database:
+  # project settings
+  name: '{{ project.name }}-{{ project.mode }}'
+  user: 'myproject'
+  password: 'myproject'
+  
+drupal:
+  # drupal root
+  #root: "/vagrant/project_demos/myproject_drupal/drupal"  # vagrant ok...
+  root: "{{ project.root }}/code/drupal"  # vagrant ok...
+  
+  dbname: '{{ database.name }}'
+  dbuser: '{{ database.user }}'
+  dbpass: '{{ database.password }}'
+  dbhost: 'localhost'
+  dbport: '3306'
+
+
+nginx:
+  port: 8080
+  root: '{{ drupal.root }}'
+  conf_type: drupal
+  
+  servernames:
+    - "mybox.dev"
+    

@@ -1,0 +1,2 @@
+---
+- include: webservers_static.yml

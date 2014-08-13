@@ -1,0 +1,29 @@
+---
+- name: start memcached
+  sudo_user: root
+  service: >
+    name=memcached 
+    state=started 
+
+- name: restart memcached
+  sudo_user: root
+  service: >
+    name=memcached 
+    state=restarted 
+
+- name: restart php5-fpm
+  service: >
+    name=php5-fpm
+    state=restarted
+
+- name: restart nginx
+  sudo_user: root
+  service: >
+    name=nginx 
+    state=restarted 
+
+- name: restart varnish
+  sudo_user: root
+  service: >
+    name=varnish
+    state=restarted  

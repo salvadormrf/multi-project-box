@@ -1,0 +1,11 @@
+---
+- name: Project | Drupal | Set files folder permissions.
+  file: >
+    path={{ drupal.root }}/sites/default/files state=directory
+    owner="{{ www_user }}"
+    group="{{ www_group }}"
+    mode=0777
+  tags:
+    - drupal
+    - permissions
+    - app

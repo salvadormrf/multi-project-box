@@ -1,0 +1,14 @@
+---
+
+- name: Gather data about target box
+  hosts: cacheservers
+  gather_facts: yes
+  tasks:
+    - debug: Gather Facts
+    
+- name: Configure target box
+  hosts: cacheservers
+  sudo: yes
+  roles:
+    - { role: varnish }
+    

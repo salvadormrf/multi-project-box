@@ -1,0 +1,12 @@
+---
+- name: Varnish | Add default varnish vcl
+  sudo: true
+  template: >
+    src=varnish_defaultvcl.j2 
+    dest=/etc/varnish/default.vcl
+  notify:
+    - restart varnish
+  tags:
+    - varnish
+
+    

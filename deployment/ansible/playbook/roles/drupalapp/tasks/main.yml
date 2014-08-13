@@ -1,0 +1,8 @@
+---
+- include: packages.yml
+- include: directories.yml
+- include: sync.yml
+- include: settings.yml
+- include: permissions.yml
+#- include: flushcache.yml
+#- include: features.yml

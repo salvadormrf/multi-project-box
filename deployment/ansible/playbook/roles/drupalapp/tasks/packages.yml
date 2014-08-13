@@ -1,0 +1,14 @@
+---
+- name: Project | Packages | Install required system packages.
+  apt: >
+    pkg={{ item }}
+    state=installed
+    update-cache=yes
+  with_items:
+    - drush
+    - mysql-client
+  tags:
+    - base
+    - packages
+    - provision
+    - app

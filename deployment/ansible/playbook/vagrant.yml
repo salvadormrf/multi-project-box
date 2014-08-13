@@ -1,5 +1,5 @@
 ---
-# file: vagrant.yml
+
 - name: Gather data about local development box
   hosts: vagrant
   gather_facts: yes

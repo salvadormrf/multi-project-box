@@ -1,0 +1,17 @@
+---
+- name: PHP5-FPM | Install required system packages.
+  apt: >
+    pkg={{ item }}
+    state=installed
+    update-cache=yes
+  with_items:
+    - php5-xcache
+    - php5-fpm
+  notify:
+    - restart php5-fpm
+  tags:
+    - packages
+    - provision
+    - webserver
+    - php5-fpm
+    

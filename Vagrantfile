@@ -34,7 +34,7 @@ Vagrant.configure("2") do |config|
     config.vm.define :devbox do |node|
         
         # box
-        node.vm.box = "Ubuntu_14.04_LTS"
+        node.vm.box = "Ubuntu_14.04_LTS-devbox"
         node.vm.box_url = 'https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box'
         
         # set hostname

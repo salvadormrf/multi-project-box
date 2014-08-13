@@ -1,0 +1,12 @@
+---
+- name: Varnish | Install varnish daemon config.
+  template: >
+    src=varnish_config.j2
+    dest=/etc/default/varnish
+  notify:
+    - restart varnish
+  tags:
+    - provision
+    - config
+    - varnish
+    

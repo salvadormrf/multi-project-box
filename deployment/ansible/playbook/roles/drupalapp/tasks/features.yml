@@ -1,0 +1,13 @@
+---
+
+- name: Project | Drupal | Drush | Revert features.
+  command: >
+    drush features-revert-all -y --root={{ drupal.root }}
+  notify:
+    - restart memcached
+    - restart php5-fpm
+  tags:
+    - features
+    - drush
+    - drupal
+    

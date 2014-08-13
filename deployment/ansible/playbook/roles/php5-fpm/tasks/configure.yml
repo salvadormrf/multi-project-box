@@ -1,0 +1,25 @@
+---
+
+- name: PHP5 | Configure PHP-FPM php.ini.
+  template: >
+    src=php.ini.j2 
+    dest=/etc/php5/fpm/php.ini 
+  notify: 
+    - restart php5-fpm
+  tags:
+    - configuration
+    - phpconfiguration
+    - webserver
+    
+- name: PHP5 | Configure PHP xcache.
+  template: >
+    src=xcache.ini.j2 
+    dest=/etc/php5/mods-available/xcache.ini 
+  notify: 
+    - restart php5-fpm
+  tags:
+    - configuration
+    - phpconfiguration
+    - webserver
+    
+    

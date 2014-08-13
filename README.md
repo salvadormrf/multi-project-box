@@ -38,30 +38,36 @@ Deployment template for hosting multiple projects with multiple environments und
     - nginx
 
 
-#### Drupal Project Stack (soon)
+#### Drupal Project Stack
     - ubuntu
     - memcached
     - mysql
     - php5
-    - drupalapp
     - php5-fpm
+    - drupalapp
     - nginx
     - varnish
+	
+    # Includes 
+        - drush clear cache
+        - drush features revert
+        - database import/backup | soon
 	
 ---
 #### Deployment | Examples
 
 ###### Django Project 
     # DEV environment
-    ansible-playbook deployment/ansible/playbook/site.yml -i deployment/ansible/inventory-example-django/dev
+    ansible-playbook deployment/ansible/playbook/site_django.yml -i deployment/ansible/inventory-example-django/dev
     
 ###### Static Project 
     # DEV environment
-    ansible-playbook deployment/ansible/playbook/staticwebservers.yml -i deployment/ansible/inventory-example-static/dev
+    ansible-playbook deployment/ansible/playbook/site_static.yml -i deployment/ansible/inventory-example-static/dev
     
 ###### Drupal Project 
     # DEV environment
-    ...
+    ansible-playbook deployment/ansible/playbook/site_drupal.yml -i deployment/ansible/inventory-example-static/dev
+	
 	
 # TODO
 - Documentation

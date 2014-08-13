@@ -1,0 +1,21 @@
+---
+
+# fpm php.ini
+php_memory_limit: 1500M
+php_max_execution_time: '90'
+php_display_errors: 'Off'
+php_display_startup_errors: 'Off'
+php_html_errors: 'On'
+php_post_max_size: '24M'
+php_upload_max_filesize: '32M'
+php_date_timezone: 'Europe/London'
+
+# others
+php_cgi_fix_pathinfo: 0 # cgi.fix_pathinfo
+php_opcache_enable: 0 # opcache.enable
+
+# xcache
+xcache_size: 120M  # xcache.size
+xcache_count: 4   # xcache.count
+xcache_stat: Off  # xcache.stat
+xcache_mmap_path: /tmp/xcache  # xcache.mmap_path

@@ -8,6 +8,7 @@
     enabled=no
   with_items:
     - postfix
+    - apache2
   tags:
     - base
     - packages
@@ -20,6 +21,7 @@
     state=absent
     update-cache=yes
   with_items:
+    - apache2
     - postfix
     - chef
     - puppet
