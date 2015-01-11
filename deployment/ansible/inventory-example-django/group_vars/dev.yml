@@ -8,9 +8,9 @@ project:
   user: ubuntu
   group: ubuntu
   
-  root: "/home/ubuntu/www/myproject-django-dev"
-  virtualenv: "/home/ubuntu/www/myproject-django-dev/venv"
-  pip_requirements: "/home/ubuntu/www/myproject-django-dev/code/myproject_django/requirements.txt"
+  root: "/srv/myproject-django-dev"
+  virtualenv: "/srv/myproject-django-dev/venv"
+  pip_requirements: "/srv/myproject-django-dev/code/myproject_django/requirements.txt"
   
   code_dir: "{{ inventory_dir }}/../../../project_demos/myproject_django"
   

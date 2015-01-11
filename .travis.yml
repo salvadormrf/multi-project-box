@@ -18,6 +18,8 @@ install:
 script:
   # Check the role/playbook's syntax.
   - ansible-playbook -i deployment/ansible/inventory-example-static/dev deployment/ansible/playbook/site_static.yml -vvvv --syntax-check
+  - ansible-playbook -i deployment/ansible/inventory-example-django/dev deployment/ansible/playbook/site_django.yml -vvvv --syntax-check
 
-  # Run the role/playbook with ansible-playbook.
+  # Run the role/playbook.
   - ansible-playbook -i deployment/ansible/inventory-example-static/dev deployment/ansible/playbook/site_static.yml -vvvv --connection=local --sudo
+  - ansible-playbook -i deployment/ansible/inventory-example-django/dev deployment/ansible/playbook/site_django.yml -vvvv --connection=local --sudo
