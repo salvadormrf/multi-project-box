@@ -11,6 +11,7 @@ before_install:
   - sudo useradd ubuntu
   - sudo usermod -a -G sudo ubuntu
   - sudo service postgresql stop
+  - sudo service mysql stop
 
 install:
   # Install pip dependencies.
