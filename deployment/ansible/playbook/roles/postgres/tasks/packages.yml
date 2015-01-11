@@ -15,4 +15,8 @@
     - postgresql-doc-9.3
     - postgresql-server-dev-all
     - libpq-dev
-  notify: restart postgresql
+
+# make sure service is enabled on boot and restart
+- name: PostgreSQL| Restart
+  service: name=postgresql state=restarted enabled=yes
+  sudo: yes
