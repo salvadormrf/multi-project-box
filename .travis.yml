@@ -16,4 +16,3 @@ script:
 
   # Run the role/playbook with ansible-playbook.
   - ansible-playbook -i deployment/ansible/inventory-example-static/dev deployment/ansible/playbook/site_static.yml -vvvv --connection=local --sudo
-
