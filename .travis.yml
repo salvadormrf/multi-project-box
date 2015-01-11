@@ -8,7 +8,7 @@ addons:
 
 before_install:
   # create ubuntu user
-  - useradd ubuntu
+  - sudo useradd ubuntu
   - sudo usermod -a -G sudo ubuntu
 
 install:
