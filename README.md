@@ -3,6 +3,7 @@ multi-project-box
 
 Deployment template for hosting multiple projects with multiple environments under the same box.
 (In progress...)
+[![Build Status](https://travis-ci.org/salvadormrf/multi-project-box.svg?branch=master)](https://travis-ci.org/salvadormrf/multi-project-box)  
 
 - Get a box
 - Buy a domain e.g. **zendevbox.com**
