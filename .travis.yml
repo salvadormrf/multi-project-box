@@ -6,6 +6,11 @@ addons:
   hosts:
     - zendevbox.com
 
+before_install:
+  # create ubuntu user
+  - useradd ubuntu
+  - sudo usermod -a -G sudo ubuntu
+
 install:
   # Install pip dependencies.
   - pip install -r deployment/deploy-requirements.txt
