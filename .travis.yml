@@ -12,6 +12,7 @@ before_install:
   - sudo usermod -a -G sudo ubuntu
   - sudo service postgresql stop
   - sudo service mysql stop
+  - sudo apt-get uninstall mysql-server postgresql
 
 install:
   # Install pip dependencies.
