@@ -9,7 +9,7 @@ project:
   group: ubuntu
   
   # project destination path
-  root: "/home/ubuntu/www/myproject-static-dev"
+  root: "/srv/myproject-static-dev"
   
   # folder to copy to destination server
   code_dir: "{{ inventory_dir }}/../../../project_demos/myproject_static"
