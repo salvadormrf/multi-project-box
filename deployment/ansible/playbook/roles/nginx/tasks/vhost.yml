@@ -9,7 +9,7 @@
   notify: restart nginx
   template: >
     src="vhost.{{ nginx.conf_type }}.conf.j2"
-    dest=/etc/nginx/sites-enabled/{{ project.name }}
+    dest="/etc/nginx/sites-enabled/{{ project.name }}.conf"
   tags:
     - configuration
     - nginx
