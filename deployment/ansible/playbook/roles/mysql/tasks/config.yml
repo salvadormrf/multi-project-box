@@ -5,6 +5,8 @@
     src=mysql.my.cnf.j2
     dest=/etc/my.cnf
   sudo: true
+  notify:
+    - restart mysql
   tags: 
     - mysql
     - database
