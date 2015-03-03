@@ -13,6 +13,7 @@ before_install:
   - sudo service postgresql stop
   - sudo service mysql stop
   - sudo apt-get purge mysql-server postgresql
+  - sudo service mysql status # some issues with mysql on travisci
 
 install:
   # Install pip dependencies.
