@@ -1,10 +1,10 @@
 ---
 
 - name: MySQL | Create MySQL configuration file.
+  sudo: yes
   template: >
     src=mysql.my.cnf.j2
     dest=/etc/my.cnf
-  sudo: true
   notify:
     - restart mysql
   tags: 
@@ -12,12 +12,12 @@
     - database
 
 - name: MySQL | Change main settings for bind-address.
+  sudo: yes
   lineinfile: >
     dest=/etc/mysql/my.cnf
     regexp="^bind-address"
     insertafter="bind-address"
     line="#bind-address"
-  sudo: true
   notify:
     - restart mysql
   tags: 
