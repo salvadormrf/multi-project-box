@@ -23,7 +23,15 @@
   tags: 
     - mysql
     - database
+
+
+## TEST
+- name: MySQL | TEST restart.
+  service: >
+    name=mysql
+    state=restarted
     
+
 # 'localhost' needs to be the last item for idempotency, see
 # http://ansible.cc/docs/modules.html#mysql-user
 - name: MySQL | Set the root password.
