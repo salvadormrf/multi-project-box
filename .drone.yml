@@ -1,0 +1,11 @@
+image: ubuntu/trusty
+script:
+  - pip install -r deployment/deploy-requirements.txt
+  - ansible-playbook -i deployment/ansible/inventory-example-static/dev deployment/ansible/playbook/site_static.yml -vvvv --syntax-check
+  - ansible-playbook -i deployment/ansible/inventory-example-django/dev deployment/ansible/playbook/site_django.yml -vvvv --syntax-check
+  - ansible-playbook -i deployment/ansible/inventory-example-static/dev deployment/ansible/playbook/site_static.yml -vvvv --connection=local --sudo
+  - ansible-playbook -i deployment/ansible/inventory-example-django/dev deployment/ansible/playbook/site_django.yml -vvvv --connection=local --sudo
+notify:
+  email:
+    recipients:
+      - salvador.mrf@gmail.com
