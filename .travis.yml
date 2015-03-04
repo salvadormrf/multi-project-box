@@ -5,6 +5,9 @@ python: "2.7"
 addons:
   hosts:
     - zendevbox.com
+    - myproject-dev.zendevbox.com
+    - myproject-test.zendevbox.com
+    - myproject-stage.zendevbox.com
 
 before_install:
   - sudo apt-get update -qq
