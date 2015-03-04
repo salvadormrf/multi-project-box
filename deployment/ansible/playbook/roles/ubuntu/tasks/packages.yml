@@ -33,8 +33,7 @@
     - nano
     - links
     
-    #- mysql-server
-    #- libmysqlclient-dev
+    - libmysqlclient-dev
     
   tags:
     - base
