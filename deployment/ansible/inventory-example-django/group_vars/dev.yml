@@ -47,7 +47,7 @@ nginx:
     
   
 mysql:
-  port: root
+  port: 3306
   root_password: 'rootpass'
 
 # TODO

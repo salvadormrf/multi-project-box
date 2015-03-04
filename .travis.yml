@@ -7,13 +7,20 @@ addons:
     - zendevbox.com
 
 before_install:
-  # create ubuntu user
+  - sudo apt-get update -qq
+  
+  # Create ubuntu user
   - sudo useradd ubuntu
   - sudo usermod -a -G sudo ubuntu
   - sudo service postgresql stop
   - sudo service mysql stop
-  - sudo apt-get purge mysql-server postgresql
-  - sudo service mysql status # some issues with mysql on travisci
+  - sudo apt-get purge postgresql
+  # Remove MySQL. Completely and totally.
+  - sudo apt-get remove --purge 'mysql*'
+  - sudo apt-get autoremove
+  - sudo apt-get autoclean
+  - sudo rm -rf /var/lib/mysql
+  - sudo truncate -s 0 /var/log/mysql/error.log
 
 install:
   # Install pip dependencies.

@@ -18,7 +18,7 @@ django:
 
 mysql:
   # MySQL Settings
-  port: root
+  port: 3306
   root_password: 'rootpass'
   
   # Project Database
