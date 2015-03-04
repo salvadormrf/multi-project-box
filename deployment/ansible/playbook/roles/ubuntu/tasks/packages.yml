@@ -28,12 +28,14 @@
     - python-virtualenv
     - python-pip
     
+    # Utilities
     - htop
-
-    - mysql-server
-    - libmysqlclient-dev
+    - nano
+    - links
     
-
+    #- mysql-server
+    #- libmysqlclient-dev
+    
   tags:
     - base
     - packages
